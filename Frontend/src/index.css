@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+:root {
+  --ink-bg: #efeff1;
+  --ink-surface: #5c6e9e;
+  --ink-surface2: #dbdff2;
+  --ink-border: #2a2f42;
+  --ink-amber: #f0a500;
+  --ink-amber-light: #110e06;
+  --ink-text: #29292b;
+  --ink-muted: #919398;
+  --ink-danger: #ef4444;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--ink-bg);
+  color: var(--ink-text);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .font-display {
+  font-family: 'Playfair Display', serif;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--ink-bg); }
+::-webkit-scrollbar-thumb { background: var(--ink-border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--ink-amber); }
+
+/* Sidebar comment panel */
+.comment-panel {
+  animation: slideIn 0.25s ease;
+}
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+/* Card hover lift */
+.post-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.post-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(240, 165, 0, 0.12);
+}
+
+/* Input focus glow */
+.ink-input:focus {
+  outline: none;
+  border-color: var(--ink-amber);
+  box-shadow: 0 0 0 3px rgba(240, 165, 0, 0.15);
+}
+
+/* Amber underline for headings */
+.amber-underline {
+  position: relative;
+  display: inline-block;
+}
+.amber-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--ink-amber);
+  border-radius: 2px;
+}
+
+/* Reading progress bar */
+#reading-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--ink-amber), var(--ink-amber-light));
+  z-index: 9999;
+  transition: width 0.1s linear;
+}
