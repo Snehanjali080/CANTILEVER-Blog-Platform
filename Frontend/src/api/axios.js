@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://cantilever-blog-platform.onrender.com/api",
+  baseURL: "https://cantilever-blog-platform.onrender.com/api" || "http://localhost:5000/api",
 });
 
 API.interceptors.request.use((req) => {
