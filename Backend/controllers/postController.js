@@ -6,6 +6,7 @@ export const createPost = async (req, res) => {
   try {
     const { title, content } = req.body;
 
+
     const post = await Post.create({
       title,
       content,
@@ -130,15 +131,15 @@ export const toggleLike = async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
 
-    console.log("POST ID:", post._id);
-console.log("LIKES BEFORE:", post.likes);
+    
 
     if (!post) {
       return res.status(404).json({
         message: "Post not found",
       });
     }
-
+console.log("POST ID:", post._id);
+console.log("LIKES BEFORE:", post.likes);
     const userId = req.user.id;
 
     const alreadyLiked = post.likes.some(

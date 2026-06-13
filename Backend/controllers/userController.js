@@ -95,15 +95,11 @@ export const toggleBookmark = async (req, res) => {
 
 export const getBookmarks = async (req, res) => {
   try {
-    const user = await req.user.populate({
-      path: "bookmarks",
-      populate: {
-        path: "author",
-        select: "name profilePic",
-      },
-    });
-
-    res.json(user.bookmarks);
+    const user = await User.findById(req.user.id).populate({
+  path: "bookmarks",
+  populate: { path: "author", select: "name profilePic" },
+});
+res.json(user.bookmarks);
   } catch (error) {
     res.status(500).json({
       message: error.message,
